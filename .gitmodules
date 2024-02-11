@@ -1,0 +1,3 @@
+[submodule "components/cyclone_tcp/CycloneTCP"]
+	path = components/cyclone_tcp/CycloneTCP
+	url = https://github.com/Oryx-Embedded/CycloneTCP.git

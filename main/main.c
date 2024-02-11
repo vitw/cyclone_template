@@ -130,13 +130,10 @@ void wifiEventHandler(void *arg, esp_event_base_t eventBase,
 void ioInit(void)
 {
    //Configure LED (GPIO2)
-   gpio_pad_select_gpio(2);
-   gpio_set_direction(2, GPIO_MODE_OUTPUT);
-   gpio_set_level(2, 0);
+   gpio_reset_pin(35);
+   gpio_set_direction(35, GPIO_MODE_OUTPUT);
+   gpio_set_level(35, 0);
 
-   //Configure user button (GPIO0)
-   gpio_pad_select_gpio(0);
-   gpio_set_direction(0, GPIO_MODE_INPUT);
 }
 
 
@@ -368,13 +365,13 @@ void app_main(void)
    ftpServerInitStart();
 
    //Create a task to blink the LED
-   taskId = osCreateTask("LED", ledTask, NULL, 200, OS_TASK_PRIORITY_NORMAL);
+//    taskId = osCreateTask("LED", ledTask, NULL, OS_TASK_PRIORITY_NORMAL);
    //Failed to create the task?
-   if(taskId == OS_INVALID_TASK_ID)
-   {
-      //Debug message
-      TRACE_ERROR("Failed to create task!\r\n");
-   }
+//    if(taskId == OS_INVALID_TASK_ID)
+//    {
+//       //Debug message
+//       TRACE_ERROR("Failed to create task!\r\n");
+//    }
 
    //Create a Wi-Fi network (AP mode)
    wifiEnableAp();
